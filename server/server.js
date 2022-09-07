@@ -1,6 +1,10 @@
+const { Storage } = require('@google-cloud/storage');
 const express = require('express');
 const fs = require('fs');
 const app = express();
+const storage = new Storage();
+const myBucket = storage.bucket('my-bucket');
+
 
 app.get('/video', (req, res) => {
   const range = req.headers.range; // The current position we are in the video we are playing (This is in bytes)
